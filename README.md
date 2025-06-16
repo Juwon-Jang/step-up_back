@@ -1,38 +1,63 @@
-# step-up_back
+# 🧠 StepUp Backend
 
-# Step Up - 온라인 멘토링 매칭 서비스
+Spring Boot 기반 멘토링 매칭 웹서비스 **StepUp**의 백엔드 레포지토리입니다.
 
-"Step Up"은 영남대학교 학생들을 위한 **멘토-멘티 매칭 웹서비스**입니다.  
-신입생, 전과생, 취업 준비생 등이 효율적으로 도움을 받을 수 있도록  
-멘토 등록, 멘토링 일정 등록, 리뷰 작성 등 다양한 기능을 제공합니다.
-
----
-
-## 🔧 개발 환경
-
-- **백엔드**: Java 17, Spring Boot 3.2, Spring Data JPA
-- **DB**: H2 In-Memory Database
-- **빌드툴**: Gradle 또는 Maven
-- **테스트 도구**: Postman
+> 해당 프로젝트는 2025년 웹프로그래밍 과목의 과제 제출용입니다.
 
 ---
 
 ## 📦 주요 기능
 
-| 기능 | 설명 |
-|------|------|
-| 회원가입 / 로그인 | 사용자 등록 및 인증 |
-| 멘토 리스트 조회 | `MENTOR` 역할 유저 목록 확인 |
-| 멘토링 게시글 등록 | 멘토가 주제와 일정을 등록 |
-| 멘토링 게시글 조회 | 전체 등록된 멘토링 목록 보기 |
-| 리뷰 작성 | 멘티가 멘토에게 리뷰 및 평점 등록 |
-| 리뷰 목록 조회 | 모든 리뷰 확인 가능 |
+- 회원가입 / 로그인
+- 멘토 리스트 제공
+- 멘토링 등록 / 조회
+- 리뷰 등록 / 조회
+- 내장 H2 데이터베이스 사용 (종료 시 초기화 가능)
 
 ---
 
-## 🚀 실행 방법 (로컬)
+## ⚙️ 실행 방법
 
-### 🔹 1. 프로젝트 실행 (IntelliJ 또는 CLI)
+### ✅ 1. 환경 준비
 
-```bash
-./gradlew bootRun
+- JDK 17 이상
+- IntelliJ IDEA (또는 VSCode + Maven)
+
+### ✅ 2. 실행 절차
+
+1. IDE에서 `StepupBackendApplication.java` 실행
+2. 콘솔에 아래 메시지 확인:
+Tomcat started on port(s): 8080
+Started StepupBackendApplication
+
+
+3. 브라우저 또는 프론트엔드에서 `http://localhost:8080`으로 API 통신 가능
+
+---
+
+## 💾 DB 정보
+
+- 내장형 H2 데이터베이스 사용 (파일 설치 필요 없음)
+- 어플리케이션 종료 시 데이터 초기화 허용됨
+- H2 Console 접근은 별도 설정 없음
+
+---
+
+## 🔗 API 엔드포인트 요약
+
+| 엔드포인트 | 설명 |
+|------------|------|
+| `POST /users/register` | 회원가입 |
+| `POST /users/login` | 로그인 |
+| `GET /users/mentors` | 멘토 리스트 조회 |
+| `POST /mentoring/register` | 멘토링 등록 |
+| `GET /mentoring/all` | 전체 멘토링 목록 조회 |
+| `POST /review` | 리뷰 등록 |
+| `GET /review/all` | 전체 리뷰 목록 조회 |
+
+---
+
+## 🤝 프론트엔드 연동
+
+프론트엔드가 `localhost:3000`에서 실행 중일 때,  
+백엔드에서 CORS 허용이 되어 있어 별도 설정 없이 통신 가능합니다.
